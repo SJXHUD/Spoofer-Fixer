@@ -14,5 +14,6 @@ __FEATURES__
 - **Download Windscribe:** *Opens the Windscribe VPN download page.*
 - **Download Cloudflare WARP:** *Opens the Cloudflare WARP VPN download page.*
 
+Be careful when using, enjoy!
+
 **VirusTotal Scan :** https://www.virustotal.com/gui/file/2bccad2051559c1d94bce717379aa97ef4ecb4cbb561508018c8d4ab4b54974a
-- Be careful when using, enjoy! -
