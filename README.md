@@ -15,3 +15,4 @@ __FEATURES__
 - **Download Cloudflare WARP:** *Opens the Cloudflare WARP VPN download page.*
 
 VirusTotal Scan : https://www.virustotal.com/gui/file/2bccad2051559c1d94bce717379aa97ef4ecb4cbb561508018c8d4ab4b54974a
+Be careful when using, enjoy!
