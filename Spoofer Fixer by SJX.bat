@@ -13,21 +13,24 @@ echo [38;2;0;220;0m                            ▐█▄▪▐█▐█▪·•
 echo [38;2;0;255;0m                             ▀▀▀▀ .▀    ▀█▄▀▪ ▀█▄▀▪▀▀▀  ▀▀▀ .▀  ▀    ▀▀▀ ▀▀▀•▀▀ ▀▀ ▀▀▀ .▀  ▀[0m
 echo [38;2;0;100;0m                                                                              by SJX @sjxhud [0m
 echo.
-echo [38;2;0;255;0m                                      ==========================================
-echo [38;2;0;255;0m                                      1) Check Serials 
-echo [38;2;0;255;0m                                      2) Install Runtimes
-echo [38;2;0;255;0m                                      3) Turn off Secure Boot
-echo [38;2;0;255;0m                                      4) Disable TPM
-echo [38;2;0;255;0m                                      5) Disable Hyper-V
-echo [38;2;0;255;0m                                      6) Lower/Disable UAC Settings
-echo [38;2;0;255;0m                                      7) Disable Driver Signature Enforcement
-echo [38;2;0;255;0m                                      8) Force Close Easy Anti-Cheat
-echo [38;2;0;255;0m                                      9) Force Close BattlEye
-echo [38;2;0;255;0m                                      10) Download Windscribe
-echo [38;2;0;255;0m                                      11) Download WARP
-echo [38;2;0;255;0m                                      12) Join Discord
-echo [38;2;0;255;0m                                      13) Exit
-echo [38;2;0;255;0m                                      ==========================================
+:: 42
+echo [38;2;0;255;0m                                      •.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.•
+echo [38;2;0;255;0m                                      • 1) Check Serials                        •
+echo [38;2;0;255;0m                                        2) Install Runtimes
+echo [38;2;0;255;0m                                        3) Turn off Secure Boot
+echo [38;2;0;255;0m                                        4) Disable TPM
+echo [38;2;0;255;0m                                        5) Disable Hyper-V
+echo [38;2;0;255;0m                                        6) Lower/Disable UAC Settings
+echo [38;2;0;255;0m                                        7) Disable Driver Signature Enforcement
+echo [38;2;0;255;0m                                        8) Force Close Easy Anti-Cheat
+echo [38;2;0;255;0m                                        9) Force Close BattlEye
+echo [38;2;0;255;0m                                        10) Download Windscribe
+echo [38;2;0;255;0m                                        11) Download WARP
+echo [38;2;0;255;0m                                        12) Join Discord
+echo [38;2;0;255;0m                                        13) Install gpedit.msc
+echo [38;2;0;255;0m                                        14) Activate Windows
+echo [38;2;0;255;0m                                      • 15) Exit                                •
+echo [38;2;0;255;0m                                      •.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.·.•
 set /p choice=Select an option (1-12):
 
 if %choice%==1 goto check_serials
@@ -42,7 +45,25 @@ if %choice%==9 goto close_battleye
 if %choice%==10 goto use_windscribe
 if %choice%==11 goto use_warp
 if %choice%==12 goto discord
-if %choice%==13 goto exit
+if %choice%==13 goto gpedit
+if %choice%==14 goto activatewindows
+if %choice%==15 goto exit
+
+:activatewindows
+powershell -Command "irm https://massgrave.dev/get | iex"
+pause
+goto menu
+
+:gpedit
+cls
+pushd "%~dp0" 
+ 
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt 
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt 
+ 
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i" 
+pause
+goto menu
 
 :check_serials
 cls
@@ -82,7 +103,7 @@ echo ==========================================
 echo Downloading and installing VC++ Redist...
 powershell -command "Start-Process https://aka.ms/vs/17/release/vc_redist.x64.exe -Wait"
 echo Downloading and installing DirectX...
-powershell -command "Start-Process https://aka.ms/dxwebsetup -Wait"
+powershell -command "Start-Process https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe -Wait"
 pause
 goto menu
 
